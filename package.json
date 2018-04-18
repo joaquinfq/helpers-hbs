@@ -1,0 +1,39 @@
+{
+    "version": "0.1.0",
+    "author": "Joaquín Fernández",
+    "name": "helpers-hbs",
+    "description": "",
+    "bugs": {
+        "url": "https://github.com/joaquinfq/helpers-hbs"
+    },
+    "keywords": [
+        "code",
+        "generator",
+        "handlebars",
+        "hbs",
+        "helpers",
+        "source",
+        "source code",
+        "template",
+        "templates"
+    ],
+    "license": "MIT",
+    "homepage": "http://www.joaquinfernandez.net",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/joaquinfq/helpers-hbs"
+    },
+    "sdependencies": {
+        "cc2sep": "^1.0.2",
+        "pad-values": "^1.0.1",
+        "prop-sep": "^1.0.0",
+        "regexcape": "^1.0.1",
+        "sep2cc": "^1.0.1"
+    },
+    "devDependencies": {
+        "istanbul": "^0.4.5"
+    },
+    "scripts": {
+        "test": "istanbul cover tests/"
+    }
+}
