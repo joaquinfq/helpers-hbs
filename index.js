@@ -11,7 +11,7 @@ module.exports = {
     registerAll(hbs)
     {
         this.scandir(src).forEach(
-            filename => this.registerHelper(hbs, path.join(src, filename))
+            filename => this.registerHelper(hbs, filename)
         );
     },
     registerHelper(hbs, filename)
