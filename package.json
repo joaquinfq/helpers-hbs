@@ -1,8 +1,8 @@
 {
-    "version": "0.1.1",
+    "version": "0.2.0",
     "author": "Joaquín Fernández",
     "name": "helpers-hbs",
-    "description": "",
+    "description": "Several useful helpers to use with handlebars.",
     "bugs": {
         "url": "https://github.com/joaquinfq/helpers-hbs"
     },
@@ -35,5 +35,8 @@
     },
     "scripts": {
         "test": "istanbul cover tests/"
+    },
+    "dependencies": {
+        "chalk": "^2.4.0"
     }
 }
