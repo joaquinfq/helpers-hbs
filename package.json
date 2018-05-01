@@ -1,5 +1,5 @@
 {
-    "version": "0.2.0",
+    "version": "0.3.0",
     "author": "Joaquín Fernández",
     "name": "helpers-hbs",
     "description": "Several useful helpers to use with handlebars.",
@@ -23,8 +23,9 @@
         "type": "git",
         "url": "https://github.com/joaquinfq/helpers-hbs"
     },
-    "sdependencies": {
+    "dependencies": {
         "cc2sep": "^1.0.2",
+        "chalk": "^2.4.0",
         "pad-values": "^1.0.1",
         "prop-sep": "^1.0.0",
         "regexcape": "^1.0.1",
@@ -35,8 +36,5 @@
     },
     "scripts": {
         "test": "istanbul cover tests/"
-    },
-    "dependencies": {
-        "chalk": "^2.4.0"
     }
 }
