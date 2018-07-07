@@ -41,6 +41,53 @@ function testObjects()
     assert.assert('equal', spaces.call(_objs[0], _objs, _key.split('').reverse().join('-')), '');
 }
 
+/**
+ * Verifica que se puedan filtar los elementos que computarán el resultado.
+ */
+function testFilter()
+{
+    const _buildLines = (items) =>
+    {
+        const _lines  = [];
+        for (const _item of items)
+        {
+            const _spaces = spaces.call(_item, items, _key, { hash : { filter : _filter }});
+            const _value  = _item[_key];
+            _lines.push(_value + _spaces + _item.col);
+        }
+
+        return _lines;
+    };
+    const _filter = 'col:a';
+    const _key    = 'val';
+    assert.assert(
+        'deepEqual',
+        _buildLines(
+            [
+                { col : 'a', val : 'abc'   },
+                { col : 'a', val : 'de'    },
+                { col : 'a', val : 'fgh'   },
+                { col : 'b', val : '12345' },
+                { col : 'b', val : '67890' },
+            ]
+        ),
+        ['abca', 'de a', 'fgha', '12345b', '67890b']
+    );
+    assert.assert(
+        'deepEqual',
+        _buildLines(
+            [
+                { col : 'a', val : 'abcdef'  },
+                { col : 'a', val : 'ghij'    },
+                { col : 'a', val : 'klmnopq' },
+                { col : 'b', val : '12345'   },
+                { col : 'b', val : '67890'   },
+            ]
+        ),
+        [ 'abcdef a', 'ghij   a', 'klmnopqa', '12345  b', '67890  b' ]
+    );
+}
+
 const values   = [
     'a',
     'bc',
@@ -59,4 +106,5 @@ assert.assert('equal', spaces(), '');
 assert.assert('equal', spaces([]), '');
 //------------------------------------------------------------------------------
 testArray();
+testFilter();
 testObjects();
