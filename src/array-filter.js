@@ -9,7 +9,7 @@ const { evaluate } = require('../utils');
  *
  * @return {Object[]} Listado con el filtro aplicado.
  */
-module.exports = function (items, key, value, op = '===')
+module.exports = function arrayFilter(items, key, value, op = '===')
 {
     if (!op || typeof op !== 'string')
     {

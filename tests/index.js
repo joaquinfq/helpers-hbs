@@ -4,20 +4,7 @@ const files  = require('../index').scandir(path.join(__dirname, 'unit'));
 
 function jsonTest(filename)
 {
-    const _name = path.basename(filename, '.json');
-    const _helper = require(path.join(__dirname, '..', 'src', _name));
-    assert.suite(
-        _name,
-        'equal',
-        require(filename).map(
-            test =>
-            {
-                const _expected = test.pop();
-                const _value    = test.shift();
-                return [_helper.call(_value, _value, ...test), _expected];
-            }
-        )
-    );
+    assert.suite(path.basename(filename, '.json'), 'equal', require(filename));
 }
 
 //------------------------------------------------------------------------------

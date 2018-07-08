@@ -8,12 +8,14 @@
         "@protected"
     ],
     [
-        "publicProp",
-        {
-            "hash" : {
-                "public" : false
+        [
+            "publicProp",
+            {
+                "hash" : {
+                    "public" : false
+                }
             }
-        },
+        ],
         ""
     ],
     [

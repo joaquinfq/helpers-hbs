@@ -1,31 +1,30 @@
-const assert   = require('../assert');
-const chalk    = require('chalk');
-const chalkHbs = require('../../src/chalk');
-const text     = 'Texto de prueba';
-const opts     = {
+const assert = require('../assert');
+const chalk  = require('chalk');
+const text   = 'Texto de prueba';
+const opts   = {
     fn()
     {
         return text;
     }
 };
 assert.suite(
-    'indent',
+    'chalk',
     'equal',
     [
         [
-            chalkHbs('cyan', opts),
+            ['cyan', opts],
             chalk.cyan(text)
         ],
         [
-            chalkHbs('cyan', { ...opts, hash : { bold : true } }),
+            ['cyan', { ...opts, hash : { bold : true } }],
             chalk.cyan.bold(text)
         ],
         [
-            chalkHbs('unknown-color', opts),
+            ['unknown-color', opts],
             text
         ],
         [
-            chalkHbs('unknown-color', { ...opts, hash : { bold : true } }),
+            ['unknown-color', { ...opts, hash : { bold : true } }],
             text
         ]
     ]

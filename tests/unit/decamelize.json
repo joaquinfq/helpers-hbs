@@ -12,21 +12,25 @@
         "a-bc-def-g"
     ],
     [
-        "ABcDefG",
-        {
-            "hash" : {
-                "sep" : "*"
+        [
+            "ABcDefG",
+            {
+                "hash" : {
+                    "sep" : "*"
+                }
             }
-        },
+        ],
         "a*bc*def*g"
     ],
     [
-        "aBcDefG",
-        {
-            "hash" : {
-                "sep" : "*"
+        [
+            "aBcDefG",
+            {
+                "hash" : {
+                    "sep" : "*"
+                }
             }
-        },
+        ],
         "a*bc*def*g"
     ],
     [

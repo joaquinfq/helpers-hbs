@@ -1,5 +1,4 @@
 const assert = require('../assert');
-const objStr = require('../../src/obj-str');
 
 function pad(text)
 {
@@ -48,25 +47,10 @@ assert.suite(
     'obj-str',
     'equal',
     [
-        [
-            objStr(null),
-            '{}'
-        ],
-        [
-            objStr(1),
-            '{}'
-        ],
-        [
-            objStr(objg),
-            strg
-        ],
-        [
-            objStr(objo),
-            stro
-        ],
-        [
-            objStr(obj),
-            str
-        ]
+        [ null, '{}' ],
+        [ 1, '{}' ],
+        [ objg, strg ],
+        [ objo, stro ],
+        [ obj, str ]
     ]
 );

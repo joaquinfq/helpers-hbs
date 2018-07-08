@@ -1,5 +1,4 @@
 const assert = require('../assert');
-const indent = require('../../src/indent');
 const opts   = {
     fn(c)
     {
@@ -12,20 +11,24 @@ assert.suite(
     'equal',
     [
         [
-            indent.call(data, opts),
-            '    lorem ipsum'
+            opts,
+            '    lorem ipsum',
+            data
         ],
         [
-            indent.call([''], opts),
-            ''
+            opts,
+            '',
+            ['']
         ],
         [
-            indent.call(data, { ...opts, hash : { size : 8 } }),
-            '        lorem ipsum'
+            { ...opts, hash : { size : 8 } },
+            '        lorem ipsum',
+            data
         ],
         [
-            indent.call(data, { ...opts, hash : { size : 8, char : '-' } }),
-            '--------lorem ipsum'
+            { ...opts, hash : { size : 8, char : '-' } },
+            '--------lorem ipsum',
+            data
         ]
     ]
 );

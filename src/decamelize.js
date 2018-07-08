@@ -9,7 +9,7 @@ const propSep = require('prop-sep');
  *
  * @return {String}
  */
-module.exports = function (text, opts)
+module.exports = function decamelize(text, opts)
 {
     return text && typeof text === 'string'
         ? cc2sep(text, propSep.get(opts, 'hash.sep', '-'))

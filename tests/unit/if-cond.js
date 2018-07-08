@@ -1,6 +1,5 @@
 const assert = require('../assert');
-const ifCond = require('../../src/if-cond');
-const opts = {
+const opts   = {
     fn()
     {
         return true;
@@ -13,7 +12,7 @@ const opts = {
 
 function generateTests(value1, value2)
 {
-    return [ '==', '===', '!=', '!==', '>=', '<=', '!', '&&', '||', 'asd', '' ].map(
+    return ['==', '===', '!=', '!==', '>=', '<=', '!', '&&', '||', 'asd', ''].map(
         operator =>
         {
             let _result = '';
@@ -48,7 +47,7 @@ function generateTests(value1, value2)
                     break;
             }
 
-            return [ ifCond(operator, value1, value2, opts), Boolean(_result) ];
+            return [ [operator, value1, value2, opts], Boolean(_result) ];
         }
     );
 }
