@@ -4,38 +4,48 @@ const src  = path.join(__dirname, 'src');
 
 module.exports = {
     /**
-     * Registra todos los helpers del proyecto.
+     * Registra todos los helpers de un directorio.
      *
      * @param {Handlebars} hbs Manejador de la plantilla.
+     * @param {string}     dir Directorio donde se buscarán los helpers.
      */
-    registerAll(hbs)
+    registerAll(hbs, dir = src)
     {
-        this.scandir(src).forEach(
-            filename => this.registerHelper(hbs, filename)
-        );
+        if (fs.existsSync(dir))
+        {
+            this.scandir(dir).forEach(
+                filename => this.registerHelper(hbs, filename)
+            );
+        }
     },
     /**
      * Registra un helper en handlebars.
      *
-     * @param {Handlebars} hbs      Módulo de handlebars a usar.
-     * @param {String}     filename Ruta completa del archivo del helper.
+     * @param {Handlebars} hbs       Módulo de handlebars a usar.
+     * @param {string}     filename  Ruta completa del archivo del helper.
+     * @param {boolean}    overwrite Sobrescribe el helper existente.
      */
-    registerHelper(hbs, filename)
+    registerHelper(hbs, filename, overwrite = true)
     {
-        hbs.registerHelper(
-            path.basename(filename, path.extname(filename)),
-            require(filename)
-        );
+        if (fs.existsSync(filename))
+        {
+            const _helpers = hbs.helpers;
+            const _name    = path.basename(filename, path.extname(filename));
+            if (overwrite || !_helpers[_name])
+            {
+                hbs.registerHelper(_name, require(filename));
+            }
+        }
     },
     /**
      * Compila una plantilla y devuelve el resultado.
      *
      * @param {Handlebars} hbs      Manejador de la plantilla.
-     * @param {String}     filename Ruta completa del archivo de la plantilla.
-     * @param {Object}     context  Contexto de la plantilla.
-     * @param {Object}     options  Opciones para compilar la plantilla.
+     * @param {string}     filename Ruta completa del archivo de la plantilla.
+     * @param {object}     context  Contexto de la plantilla.
+     * @param {object}     options  Opciones para compilar la plantilla.
      *
-     * @return {String} Plantilla renderizada.
+     * @return {string} Plantilla renderizada.
      */
     render(hbs, filename, context = {}, options = {})
     {
@@ -62,12 +72,14 @@ module.exports = {
     /**
      * Escanea un directorio de manera no recursiva.
      *
-     * @param {String} dir Ruta del directorio a escanear.
+     * @param {string} dir Ruta del directorio a escanear.
      *
-     * @return {String[]} Ruta completa de los archivos encontrados.
+     * @return {string[]} Ruta completa de los archivos encontrados.
      */
     scandir(dir)
     {
-        return fs.readdirSync(dir).map(file => path.join(dir, file));
+        return fs.existsSync(dir)
+            ? fs.readdirSync(dir).map(file => path.join(dir, file))
+            : [];
     }
 };

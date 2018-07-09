@@ -1,5 +1,5 @@
 {
-    "version": "0.3.3",
+    "version": "0.3.4",
     "author": "Joaquín Fernández",
     "name": "helpers-hbs",
     "description": "Several useful helpers to use with handlebars.",
